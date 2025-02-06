@@ -1,0 +1,38 @@
+atlantis_base_simulator:
+  ros__parameters:
+    use_sim_time: True
+    goal_tolerance: 2.0
+    map: "src/atlantis_collection/scenarios/empty/empty.yaml"
+    planners: ["CarPlanner"]
+    CarPlanner:
+      model: REEDS_SHEPP
+      max_planning_time: 1.0
+    robots: ["robot1"]
+    materials: ["mat1"]
+    waypoints: ["wp1" , "wp2"]
+    metrics: ["computational_time" , "path_lenght"]
+    wp1:
+      x: 20.0
+      y: 20.0
+      z: 0.0
+      yaw: 0.0
+    wp2:
+      x: 30.0
+      y: 30.0
+      z: 0.0
+      yaw: 0.0
+    robot1:
+      ID: 1
+      type: 1
+      capacity: 10.0
+      model: "package://zeux_description/models/zeux.dae"
+      footprint: "[[1.0, -1.0], [1.0, 1.0], [-1.0, 1.0], [-1.0, -1.0]]"
+      initial_pose:
+        x: 10.0
+        y: 10.0
+        z: 0.0
+        yaw: 0.0
+    mat1:
+      locations: ["wp1"]
+      wp1:
+        amount: 10.0

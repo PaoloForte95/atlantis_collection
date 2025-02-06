@@ -1,3 +1,9 @@
 # atlantis_collection
 
-A collection of scenarios
+A project that contains some scenarios and machines.
+
+To clone run,
+
+```
+git clone --recurse-submodules https://gitsvn-nt.oru.se/pofe/atlantis_collection.git
+```

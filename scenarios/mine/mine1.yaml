@@ -1,0 +1,240 @@
+atlantis_discrete_event_simulator:
+  ros__parameters:
+    use_sim_time: True
+    robots: ["robot1", "robot2"]
+    materials: ["mat1"]
+    #waypoints_file: "path/to/file"
+    waypoints: ["home1", "wp1" , "wp2" ,"wp3", "wp4"]
+    metrics: ["execution_time" , "action_time"]
+    home1:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 1.57
+    wp1:
+      x: 0.0
+      y: 11.0
+      z: 0.0
+      yaw: 1.57
+    wp2:
+      x: 23.19
+      y: 5.99
+      z: 0.0
+      yaw: 1.57
+    wp3:
+      x: 12.19
+      y: 3.99
+      z: 0.0
+      yaw: 1.57
+    wp4:
+      x: 0.0
+      y: 28.0
+      z: 0.0
+      yaw: 1.57
+    robot1:
+      ID: 1
+      type: 2
+      capacity: 5.0
+      start_location: "home1"
+    robot2:
+      ID: 2
+      type: 2
+      capacity: 5.0
+      start_location: "home2"
+    mat1:
+      locations: ["wp1"]
+      wp1:
+        amount: 10.0
+
+
+atlantis_base_simulator:
+  ros__parameters:
+    use_sim_time: True
+    goal_tolerance: 2.0
+    map: "src/atlantis_collection/scenarios/mine/mine_small_reverse.yaml"
+    planners: ["CarPlanner"]
+    #Available models: DUBIN, REEDS_SHEPP, STATE_LATTICE, 2D
+    CarPlanner:
+      model: REEDS_SHEPP
+    #AStar:
+     #model: 2D
+    robots: ["robot1"]
+    materials: ["mat1"]
+    #waypoints_file: "path/to/file"
+    waypoints: ["wp1" , "wp2"]
+    metrics: ["computational_time" , "path_lenght"]
+    wp1:
+      x: 5.0
+      y: 5.0
+      z: 0.0
+      yaw: 0.0
+    wp2:
+      x: 20.0
+      y: 20.0
+      z: 0.0
+      yaw: 0.0
+    robot1:
+      ID: 1
+      type: 1
+      model: "package://zeux_description/models/zeux.dae"
+      footprint: "[[1.0, -1.0], [1.0, 1.0], [-1.0, 1.0], [-1.0, -1.0]]"
+      initial_pose:
+        x: 10.0
+        y: 10.0
+        z: 0.0
+        yaw: 0.0
+    mat1:
+      locations: ["wp1"]
+      wp1:
+        amount: 10.0
+
+
+atlantis_ecl_base_simulator:
+  ros__parameters:
+    use_sim_time: True
+    goal_tolerance: 2.0
+    map: "src/atlantis_collection/scenarios/mine/mine_small_reverse.yaml"
+    lattice_primitives: "volvo_l70_cardinality3"
+    primitives_dir: "src/ecceleron_ros2/navigation/ecceleron_global_planner/lattice_primitives/Volvo_L70/"
+    robots: ["robot1", "robot2"]
+    materials: ["mat1", "mat2"]
+    #waypoints_file: "path/to/file"
+    waypoints: ["wp1" , "wp2" ,"wp3", "wp4"]
+    metrics: ["computational_time" , "path_lenght"]
+    wp1:
+      x: 5.0
+      y: 5.0
+      z: 0.0
+      yaw: 0.0
+    wp2:
+      x: 10.0
+      y: 10.0
+      z: 0.0
+      yaw: 0.0
+    wp3:
+      x: 15.0
+      y: 15.0
+      z: 0.0
+      yaw: 0.0
+    wp4:
+      x: 20.0
+      y: 20.0
+      z: 0.0
+      yaw: 0.0
+    robot1:
+      ID: 1
+      type: 1
+      model: "package://zeux_description/models/zeux.dae"
+      footprint: "[[1.0, -1.0], [1.0, 1.0], [-1.0, 1.0], [-1.0, -1.0]]"
+      initial_pose:
+        x: 10.0
+        y: 10.0
+        z: 0.0
+        yaw: 0.0
+    robot2:
+      ID: 2
+      type: 1
+      model: "package://zeux_description/models/zeux.dae"
+      footprint: "[[1.0, -1.0], [1.0, 1.0], [-1.0, 1.0], [-1.0, -1.0]]"
+      initial_pose:
+        x: 20.0
+        y: 20.0
+        z: 0.0
+        yaw: 0.0
+    mat1:
+      locations: ["wp1", "wp3"]
+      wp1:
+        amount: 10.0
+      wp3:
+        amount: 10.0
+    mat2:
+      locations: ["wp2"]
+      wp2:
+        amount: 10.0
+
+atlantis_gazebo_simulator:
+  ros__parameters:
+    use_sim_time: True
+    rviz_config_file: "/home/pofe/dev_ws/src/a25/a25_description/launch/a25_namespaced.rviz"
+    map: "src/atlantis_collection/scenarios/mine/mine_small_reverse.yaml"
+    world: '/home/pofe/dev_ws/src/atlantis_collection/scenarios/mine/mine.world'
+    robots: ["robot1", "robot2"]
+    materials: ["mat1"]
+    #waypoints_file: "path/to/file"
+    waypoints: ["wp1" , "wp2" ,"wp3", "wp4"]
+    metrics: ["computational_time" , "path_lenght"]
+    wp1:
+      x: 5.0
+      y: 5.0
+      z: 0.0
+      yaw: 0.0
+    wp2:
+      x: 5.0
+      y: 5.0
+      z: 0.0
+      yaw: 0.0
+    wp3:
+      x: 5.0
+      y: 5.0
+      z: 0.0
+      yaw: 0.0
+    wp4:
+      x: 5.0
+      y: 5.0
+      z: 0.0
+      yaw: 0.0
+    robot1:
+      ID: 1
+      type: 2
+      param_file: "/home/pofe/dev_ws/src/a25/a25_launch/params/a25_navigation_configs.yaml"
+      initial_pose:
+        x: 10.0
+        y: 10.0
+        z: 0.0
+        yaw: 0.0
+    robot2:
+      ID: 2
+      type: 2
+      param_file: "/home/pofe/dev_ws/src/a25/a25_launch/params/a25_navigation_configs.yaml"
+      initial_pose:
+        x: 20.0
+        y: 20.0
+        z: 0.0
+        yaw: 0.0
+    mat1:
+      locations: ["wp1"]
+      wp1:
+        amount: 10.0
+
+
+ecl_fleet_coordination:
+  ros__parameters:
+    use_sim_time: True
+    params:
+      origin:
+        x: -1.
+        y: -1.
+      resolution: 0.1
+      width: 400
+      height: 400
+    robots: ["robot1", "robot2"]
+    robot1:
+      ID: 1
+      type: 2
+    robot2:
+      ID: 2
+      type: 2
+
+atlantis_simple_commander:
+   ros__parameters:
+    use_sim_time: True
+    robot_ids: [1,2]
+    actions: ["MoveTo", "Load", "Dump"]
+
+ecceleron_simple_commander:
+   ros__parameters:
+    use_sim_time: True
+    robot_ids: [1,2]
+    actions: ["MoveTo", "Load", "Dump"]
+
+
