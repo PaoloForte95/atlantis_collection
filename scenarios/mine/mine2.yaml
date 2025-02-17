@@ -10,7 +10,7 @@ atlantis_base_simulator:
     materials: ["mat1", "mat2"]
     waypoints_file: "mine2_waypoints.txt"
     #waypoints: ["wp1" , "wp2" ,"wp3", "wp4"]
-    metrics: ["computational_time" , "path_length", ]
+    metrics: ["computational_time" , "path_length"]
     use_trajectory_dt: true
     dt: 0.1
     real_time_factor: 2.
