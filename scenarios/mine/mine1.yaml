@@ -8,7 +8,7 @@ atlantis_base_simulator:
     primitives_dir: "src/ecceleron_ros2/navigation/ecceleron_global_planner/lattice_primitives/Volvo_L70/"
     robots: ["robot1", "robot2"]
     max_planning_time: 5.0
-    max_sim_time: 5.0
+    #max_sim_time: 5.0
     materials: ["mat1", "mat2"]
     waypoints_file: "mine1_waypoints.txt"
     #waypoints: ["wp1" , "wp2" ,"wp3", "wp4"]
