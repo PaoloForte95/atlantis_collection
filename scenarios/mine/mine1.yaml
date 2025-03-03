@@ -13,6 +13,7 @@ atlantis_base_simulator:
     waypoints_file: "mine1_waypoints.txt"
     #waypoints: ["wp1" , "wp2" ,"wp3", "wp4"]
     metrics: ["computational_time" , "path_length"]
+    refilling: True
     use_trajectory_dt: true
     dt: 0.1
     real_time_factor: 2.
@@ -43,11 +44,9 @@ atlantis_base_simulator:
         z: 0.0
         yaw: -0.572064
     mat1:
-      locations: ["load1"]
+      locations: ["load1", "load2"]
       load1:
         amount: 10.0
-    mat2:
-      locations: ["load2"]
       load2:
         amount: 10.0
 
