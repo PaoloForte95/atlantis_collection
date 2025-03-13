@@ -7,7 +7,7 @@ atlantis_base_simulator:
     lattice_primitives: "volvo_l70_cardinality3"
     primitives_dir: "src/ecceleron_ros2/navigation/ecceleron_global_planner/lattice_primitives/Volvo_L70/"
     robots: ["robot1", "robot2"]
-    max_planning_time: 5.0
+    max_planning_time: 10.0
     #max_sim_time: 5.0
     materials: ["mat1", "mat2"]
     waypoints_file: "mine1_waypoints.txt"
@@ -44,10 +44,12 @@ atlantis_base_simulator:
         z: 0.0
         yaw: -0.572064
     mat1:
-      locations: ["load1", "load2"]
+      locations: ["load1", "load2","load8"]
       load1:
         amount: 10.0
       load2:
+        amount: 10.0
+      load8:
         amount: 10.0
 
 ecl_fleet_coordination:
@@ -73,3 +75,9 @@ atlantis_simple_commander:
     use_sim_time: True
     robot_ids: [1,2]
     actions: ["MoveTo", "Load", "Dump"]
+
+state_generator:
+  ros__parameters:
+    state_generator_plugin: "PDDL"
+    PDDL:
+      plugin: "atlantis_state::PddlStateGenerator"
