@@ -7,7 +7,9 @@ atlantis_base_simulator:
     lattice_primitives: "volvo_l70_cardinality3"
     primitives_dir: "src/ecceleron_ros2/navigation/ecceleron_global_planner/lattice_primitives/Volvo_L70/"
     robots: ["robot1", "robot2"]
-    max_planning_time: 10.0
+    max_planning_time: 20.0
+    use_precomputed_paths: False
+    precomputed_paths_folder: "/home/pofe/atlantis_ws/src/atlantis/atlantis_collection/scenarios/mine/paths"
     #max_sim_time: 5.0
     materials: ["mat1", "mat2"]
     waypoints_file: "mine1_waypoints.txt"
@@ -26,10 +28,10 @@ atlantis_base_simulator:
       footprint: "[[1.0, -1.0], [1.0, 1.0], [-1.0, 1.0], [-1.0, -1.0]]"
       planner: "Hybrid"
       initial_pose:
-        x: 40.0
-        y: 54.0846
+        x: 40.01
+        y: 116.76
         z: 0.0
-        yaw: 2.62312
+        yaw: 2.59
     robot2:
       ID: 2
       type: 2
