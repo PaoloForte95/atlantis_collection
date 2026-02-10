@@ -14,6 +14,7 @@ find_package(ament_cmake REQUIRED)
 
 install(DIRECTORY
   scenarios
+  models
   DESTINATION share/${PROJECT_NAME}/
 )
 
