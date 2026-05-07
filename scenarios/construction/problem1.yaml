@@ -1,0 +1,70 @@
+atlantis_discrete_event_simulator:
+  ros__parameters:
+    use_sim_time: True
+    execution_sec: 2
+    waypoints: ["load1" , "dump1" ,"home1"]
+
+    waypoint_publisher:
+      topic: "waypoints"
+      frame_id: "map"
+
+    metrics: ["computational_time" , "path_length"]
+    load1:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+    dump1:
+      x: 1.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+    home1:
+      x: 2.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+    robots: ["robot1"]
+    robot1:
+      type: 2
+      capacity: 10.0
+      start_location: home1
+    materials: ["mat1"]
+    mat1:
+      locations: ["load1"]
+      load1:
+        amount: 10.0
+
+    # ---- Action plugins (applied to every robot) ----
+    actions: ["move", "load", "dump"]
+
+    move:
+      type: "atlantis_simulator::MoveActionPlugin"
+      topic: "move_to_pose"
+    load:
+      type: "atlantis_simulator::LoadActionPlugin"
+      topic: "send_load"
+    dump:
+      type: "atlantis_simulator::DumpActionPlugin"
+      topic: "send_dump"
+
+    # ---- Service plugins (applied to every robot) ----
+    services: ["get_material_amount"]
+
+    get_material_amount:
+      type: "atlantis_simulator::MaterialAmountServicePlugin"
+      topic: "get_material_amount"
+
+atlantis_simple_commander:
+   ros__parameters:
+    use_sim_time: True
+    waypoints_file: "package://atlantis_collection/scenarios/mine/map1/map1_waypoints.txt"
+    robots: ["robot1", "robot2"]
+    actions: ["MoveTo", "Load", "Dump"]
+
+state_generator:
+  ros__parameters:
+    state_generator_plugin: "PDDL"
+    robots: ["robot1", "robot2"]
+    PDDL:
+      plugin: "atlantis_state::PddlStateGenerator"
