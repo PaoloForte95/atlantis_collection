@@ -67,15 +67,13 @@ atlantis_base_simulator:
      # z: 0.0
      # yaw: 2.59
     robots: ["robot1"]
-    max_planning_time: 1.0
+    max_planning_time: 5.0
     randomness: True
-    uncertainty: 0.40
+    uncertainty: 0.30
     use_precomputed_paths: True
     precomputed_paths_folder: "package://atlantis_collection/scenarios/construction/paths"
-    path_costs: "path_costs.csv"
-    compute_path_costs: True
     #max_sim_time: 5.0
-    materials: ["mat1"]
+    materials: ["mat1", "mat2"]
     metrics: ["computational_time" , "path_length"]
     refilling: false
     use_trajectory_dt: true
@@ -95,10 +93,12 @@ atlantis_base_simulator:
         z: 0.0
         yaw: -0.847167
     mat1:
-      locations: ["load9", "load10"]
-      load9:
-        amount: 20.0
-      load10:
+      locations: ["load2"]
+      load2:
+        amount: 30.0
+    mat2:
+      locations: ["load3"]
+      load3:
         amount: 30.0
 
     actions: ["move", "load", "dump"]

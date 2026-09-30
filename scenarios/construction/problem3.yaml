@@ -58,7 +58,7 @@ atlantis_base_simulator:
   ros__parameters:
     use_sim_time: True
     goal_tolerance: 2.0
-    map: "package://atlantis_collection/scenarios/construction/map1.yaml"
+    map: "package://atlantis_collection/scenarios/construction/map2.yaml"
     waypoints_file: "package://atlantis_collection/scenarios/construction/map1_waypoints.txt"
     #waypoints: ["wp1" , "wp2" ,"wp3", "wp4"]
     #wp1:
@@ -66,16 +66,14 @@ atlantis_base_simulator:
      # y: 116.76
      # z: 0.0
      # yaw: 2.59
-    robots: ["robot1"]
-    max_planning_time: 1.0
+    robots: ["robot1", "robot2"]
+    max_planning_time: 3.0
     randomness: True
-    uncertainty: 0.40
+    uncertainty: 0.30
     use_precomputed_paths: True
     precomputed_paths_folder: "package://atlantis_collection/scenarios/construction/paths"
-    path_costs: "path_costs.csv"
-    compute_path_costs: True
     #max_sim_time: 5.0
-    materials: ["mat1"]
+    materials: ["mat1", "mat2", "mat3"]
     metrics: ["computational_time" , "path_length"]
     refilling: false
     use_trajectory_dt: true
@@ -90,16 +88,35 @@ atlantis_base_simulator:
       footprint: "[[1.0, -1.0], [1.0, 1.0], [-1.0, 1.0], [-1.0, -1.0]]"
       planner: "Hybrid"
       initial_pose:
+        x: 62.2773
+        y: 10.3697
+        z: 0.0
+        yaw: -0.847167
+    robot2:
+      ID: 2
+      type: "truck"
+      capacity: 10.0
+      minimum_turning_radius: 8.0
+      model: "package://atlantis_collection/models/mine_truck.stl"
+      footprint: "[[1.0, -1.0], [1.0, 1.0], [-1.0, 1.0], [-1.0, -1.0]]"
+      planner: "Hybrid"
+      initial_pose:
         x: 93.8028
         y: 8.59434
         z: 0.0
         yaw: -0.847167
     mat1:
-      locations: ["load9", "load10"]
-      load9:
-        amount: 20.0
+      locations: ["load5"]
+      load5:
+        amount: 50.0
+    mat2:
+      locations: ["load3"]
+      load3:
+        amount: 50.0
+    mat3:
+      locations: ["load10"]
       load10:
-        amount: 30.0
+        amount: 50.0
 
     actions: ["move", "load", "dump"]
 
