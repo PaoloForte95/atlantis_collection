@@ -1,0 +1,10 @@
+nodes:
+  robot1: {type: robot}
+  load1: {type: location}
+  dump1: {type: location}
+  home1: {type: location}
+  mat1: {type: material}
+edges:
+  - {predicate: at, args: [robot1, home1]}
+  - {predicate: at, args: [mat1, load1]}
+  - {predicate: robot_free, args: [robot1]}
