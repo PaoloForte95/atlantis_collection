@@ -73,7 +73,7 @@ atlantis_base_simulator:
     use_precomputed_paths: True
     precomputed_paths_folder: "package://atlantis_collection/scenarios/construction/paths"
     path_costs: "path_costs.csv"
-    compute_path_costs: True
+    compute_path_costs: False
     #max_sim_time: 5.0
     materials: ["mat1"]
     metrics: ["computational_time" , "path_length"]
@@ -131,9 +131,13 @@ atlantis_simple_commander:
     robots: ["robot1", "robot2"]
     actions: ["MoveTo", "Load", "Dump"]
 
-state_generator:
+scene_graph_generator:
   ros__parameters:
-    state_generator_plugin: "PDDL"
-    robots: ["robot1", "robot2"]
-    PDDL:
-      plugin: "atlantis_state::PddlStateGenerator"
+    scene_graph_rate: 1.0
+    initial_objects: ["robot1", "wp1", "wp2", "box1"]
+    robot_type: "robot"
+    waypoint_type: "location"
+    initial_facts: ["(robot_free robot1)"]
+    plugin: "agent"
+    agent:
+      plugin: "atlantis_scene_graph::AgentSceneGraphGenerator"

@@ -131,9 +131,9 @@ atlantis_simple_commander:
     robots: ["robot1", "robot2"]
     actions: ["MoveTo", "Load", "Dump"]
 
-state_generator:
+scene_graph_generator:
   ros__parameters:
-    state_generator_plugin: "PDDL"
+    plugin: "AGENT"
     robots: ["robot1", "robot2"]
-    PDDL:
-      plugin: "atlantis_state::PddlStateGenerator"
+    AGENT:
+      plugin: "atlantis_scene_graph::AgentSceneGraphGenerator"
