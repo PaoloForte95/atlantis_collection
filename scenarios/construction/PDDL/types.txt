@@ -1,0 +1,5 @@
+locatable - object
+location  - object
+robot - locatable
+item - locatable
+material - item
