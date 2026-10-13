@@ -134,10 +134,11 @@ atlantis_simple_commander:
 scene_graph_generator:
   ros__parameters:
     scene_graph_rate: 1.0
-    initial_objects: ["robot1", "wp1", "wp2", "box1"]
+    scene_graph_file: "package://atlantis_collection/scenarios/construction/scene_graph/scene_graph_p1.yaml"
     robot_type: "robot"
     waypoint_type: "location"
-    initial_facts: ["(robot_free robot1)"]
+    #initial_objects: ["robot1", "wp1", "wp2", "box1"]
+    #initial_facts: ["(robot_free robot1)"]
     plugin: "agent"
     agent:
       plugin: "atlantis_scene_graph::AgentSceneGraphGenerator"
