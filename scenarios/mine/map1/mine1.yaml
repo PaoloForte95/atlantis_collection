@@ -13,10 +13,11 @@ atlantis_base_simulator:
     robots: ["robot1", "robot2"]
     max_planning_time: 20.0
     randomness: True
+    uncertainty: 0.05
     use_precomputed_paths: True
     precomputed_paths_folder: "package://atlantis_collection/scenarios/mine/paths"
     #max_sim_time: 5.0
-    materials: ["mat1", "mat2"]
+    materials: ["mat1"]
     metrics: ["computational_time" , "path_length"]
     refilling: True
     use_trajectory_dt: true
@@ -24,7 +25,7 @@ atlantis_base_simulator:
     real_time_factor: 10.
     robot1:
       ID: 1
-      type: 2
+      type: "truck"
       capacity: 10.0
       minimum_turning_radius: 8.0
       model: "package://atlantis_collection/models/mine_truck.stl"
@@ -37,7 +38,7 @@ atlantis_base_simulator:
         yaw: 2.59
     robot2:
       ID: 2
-      type: 2
+      type: "truck"
       capacity: 10.0
       minimum_turning_radius: 8.0
       model: "package://atlantis_collection/models/mine_truck.stl"
@@ -49,13 +50,36 @@ atlantis_base_simulator:
         z: 0.0
         yaw: -0.572064
     mat1:
-      locations: ["load1", "load2","load8"]
+      locations: ["load1", "load2", "load8"]
       load1:
         amount: 10.0
       load2:
         amount: 10.0
       load8:
         amount: 10.0
+
+    actions: ["move", "load", "dump"]
+
+    move:
+      type: "atlantis_base::MoveActionPlugin"
+      topic: "navigate_to_pose"
+    load:
+      type: "atlantis_base::LoadActionPlugin"
+      topic: "send_load"
+    dump:
+      type: "atlantis_base::DumpActionPlugin"
+      topic: "send_dump"
+
+    # ---- Service plugins (applied to every robot) ----
+    services: ["get_material_amount", "get_waypoint_list"]
+
+    get_material_amount:
+      type: "atlantis_base::MaterialAmountServicePlugin"
+      topic: "get_material_amount"
+    get_waypoint_list:
+      type: "atlantis_base::WaypointListServicePlugin"
+      topic: "get_waypoint_list"
+
 
 atlantis_simple_commander:
    ros__parameters:
@@ -64,9 +88,9 @@ atlantis_simple_commander:
     robots: ["robot1", "robot2"]
     actions: ["MoveTo", "Load", "Dump"]
 
-state_generator:
+scene_graph_generator:
   ros__parameters:
-    state_generator_plugin: "PDDL"
+    plugin: "AGENT"
     robots: ["robot1", "robot2"]
-    PDDL:
-      plugin: "atlantis_state::PddlStateGenerator"
+    AGENT:
+      plugin: "atlantis_scene_graph::AgentSceneGraphGenerator"
