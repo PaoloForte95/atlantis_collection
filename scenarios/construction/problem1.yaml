@@ -2,7 +2,10 @@ atlantis_discrete_event_simulator:
   ros__parameters:
     use_sim_time: True
     execution_sec: 2
-    waypoints: ["load1" , "dump1" ,"home1"]
+    waypoints: ["load9" , "dump1" ,"home1"]
+
+    path_costs: "path_costs.csv"
+    compute_path_costs: false
 
     waypoint_publisher:
       topic: "waypoints"
@@ -26,12 +29,13 @@ atlantis_discrete_event_simulator:
       yaw: 0.0
     robots: ["robot1"]
     robot1:
-      type: "vehicle"
+      type: "truck"
       capacity: 12.0
+      execution_sec: 2
     materials: ["mat1"]
     mat1:
-      locations: ["load1"]
-      load1:
+      locations: ["load9"]
+      load9:
         amount: 10.0
 
     # ---- Action plugins (applied to every robot) ----
@@ -42,10 +46,10 @@ atlantis_discrete_event_simulator:
       topic: "move_to_pose"
     load:
       type: "atlantis_simulator::LoadActionPlugin"
-      topic: "send_load"
+      topic: "load"
     dump:
       type: "atlantis_simulator::DumpActionPlugin"
-      topic: "send_dump"
+      topic: "dump"
 
     # ---- Service plugins (applied to every robot) ----
     services: ["get_material_amount"]
